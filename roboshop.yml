@@ -4,4 +4,4 @@
   roles:
     - "{{ component_name}}"
 
-#Execute with the command $ ansible-playbook -i component-dev.saitejasroboshop.store, -e ansible_user=ec2-user -e ansible_password=DevOps321  roboshop.yml -e component_name=[component]
+#Execute with the command $ ansible-playbook -i [component]-dev.saitejasroboshop.store, -e ansible_user=ec2-user -e ansible_password=DevOps321  roboshop.yml -e component_name=[component]
