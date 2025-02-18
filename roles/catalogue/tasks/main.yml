@@ -14,4 +14,4 @@
     state: installed
 
 - name: Load Master Data
-  ansible.builtin.shell: mongosh --host mongodb-dev.rdevopsb83.online </app/db/master-data.js
+  ansible.builtin.shell: mongosh --host mongodb-dev.saitejasroboshop.store </app/db/master-data.js
