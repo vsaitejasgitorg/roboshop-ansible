@@ -10,7 +10,7 @@
 
 
 - name: Initialize Go Component
-  ansible.builtin.shell: go mod init $component
+  ansible.builtin.shell: go mod init {{ component_name }}
   args:
     chdir: /app
 
