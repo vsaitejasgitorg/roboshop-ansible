@@ -14,4 +14,4 @@
     state: installed
 
 - name: Load Master Data
-  ansible.builtin.shell: mongosh --host mongodb--{{ env }}.saitejasroboshop.store </app/db/master-data.js
+  ansible.builtin.shell: mongosh --host mongodb-{{ env }}.saitejasroboshop.store </app/db/master-data.js
