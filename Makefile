@@ -4,6 +4,7 @@ default:
 #Execute by typing $ make component_name=[component] env=[dev,prod,test]
 
 all:
+	git pull
 	ansible-playbook -i frontend-dev.saitejasroboshop.store, -e ansible_user=ec2-user -e ansible_password=DevOps321 roboshop.yml -e component_name=frontend -e env=$(env)
 	ansible-playbook -i redis-dev.saitejasroboshopstore, -e ansible_user=ec2-user -e ansible_password=DevOps321 roboshop.yml -e component_name=redis -e env=$(env)
 	ansible-playbook -i mongodb-dev.saitejasroboshop.store, -e ansible_user=ec2-user -e ansible_password=DevOps321 roboshop.yml -e component_name=mongodb -e env=$(env)
