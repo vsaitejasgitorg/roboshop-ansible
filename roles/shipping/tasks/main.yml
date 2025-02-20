@@ -9,10 +9,10 @@
     state: installed
 
 - name: Load Schema
-  ansible.builtin.shell: mysql -h mysql--{{ env }}.saitejasroboshop.store -uroot -pRoboShop@1 < /app/db/schema.sql
+  ansible.builtin.shell: mysql -h mysql-{{ env }}.saitejasroboshop.store -uroot -pRoboShop@1 < /app/db/schema.sql
 
 - name: Load User creation
-  ansible.builtin.shell: mysql -h mysql--{{ env }}.saitejasroboshop.store -uroot -pRoboShop@1 < /app/db/app-user.sql
+  ansible.builtin.shell: mysql -h mysql-{{ env }}.saitejasroboshop.store -uroot -pRoboShop@1 < /app/db/app-user.sql
 
 - name: Load Master Data
-  ansible.builtin.shell: mysql -h mysql--{{ env }}.saitejasroboshop.store -uroot -pRoboShop@1 < /app/db/master-data.sql
+  ansible.builtin.shell: mysql -h mysql-{{ env }}.saitejasroboshop.store -uroot -pRoboShop@1 < /app/db/master-data.sql
