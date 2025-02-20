@@ -14,3 +14,5 @@ all:
 	ansible-playbook -i cart-dev.saitejasroboshop.store, -e ansible_user=ec2-user -e ansible_password=DevOps321 roboshop.yml -e component_name=cart -e env=$(env)
 	ansible-playbook -i shipping-dev.saitejasroboshop.store, -e ansible_user=ec2-user -e ansible_password=DevOps321 roboshop.yml -e component_name=shipping -e env=$(env)
 	ansible-playbook -i payment-dev.saitejasroboshop.store, -e ansible_user=ec2-user -e ansible_password=DevOps321 roboshop.yml -e component_name=payment -e env=$(env)
+
+#This Command executes configuration of all servers at once
