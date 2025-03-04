@@ -1,0 +1,2 @@
+service_username: roboshop
+service_start_command: "/app/dispatch"
