@@ -1,3 +1,7 @@
+- name: Increase disk
+  ansible.builtin.shell: growpart /dev/nvme0n1 4 ; lvextend -r -l 100%FREE /dev/mapper/RootVG-varVol
+  ignore_errors: yes
+
 - name: Download Docker Repo File
   ansible.builtin.get_url:
     url: https://download.docker.com/linux/rhel/docker-ce.repo
