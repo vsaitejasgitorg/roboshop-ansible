@@ -12,15 +12,15 @@
 - name: Create Container Secrets
   ansible.builtin.lineinfile:
     path: /opt/{{ component_name }}.env
-    create: yes
     line: "{{item.key}}={{item.value}}"
+    create: yes
   loop: "{{ component_secrets|dict2items }}"
 
 - name: Create Frontend Container
   community.docker.docker_container:
     name: frontend
     image: public.ecr.aws/w8x4g9h7/roboshop-v3/frontend
-    state: present
+    state: started
     recreate: true
     exposed_ports:
       - "80:80"
