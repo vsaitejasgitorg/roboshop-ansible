@@ -8,9 +8,11 @@
     component_secrets: "{{ lookup('community.hashi_vault.hashi_vault', 'roboshop-{{ env }}/data/{{ component }} token={{ vault_token }} url=http://vault-internal.saitejasroboshop.store:8200') }}"
   vars:
     component: frontend
+
 - name: Create Container Secrets
   ansible.builtin.lineinfile:
     path: /opt/{{ component_name }}.env
+    create: yes
     line: "{{item.key}}={{item.value}}"
   loop: "{{ component_secrets|dict2items }}"
 
