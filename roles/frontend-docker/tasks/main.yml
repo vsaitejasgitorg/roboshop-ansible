@@ -22,6 +22,6 @@
     image: public.ecr.aws/w8x4g9h7/roboshop-v3/frontend
     state: started
     recreate: true
-    exposed_ports:
+    ports:
       - "80:80"
     env_file: /opt/{{ component_name }}.env
