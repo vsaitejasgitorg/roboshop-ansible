@@ -41,7 +41,7 @@
     state: started
     recreate: true
     ports:
-      - "80:80"
+      - "{{ app_port }}:{{ app_port }}"
     env_file: /opt/{{ component }}.env
 
 

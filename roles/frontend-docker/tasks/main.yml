@@ -3,3 +3,5 @@
     name: common
     tasks_from: docker
 
+  vars:
+    app_port:80
