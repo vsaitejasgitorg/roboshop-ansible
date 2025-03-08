@@ -2,3 +2,23 @@
   ansible.builtin.include_role:
     name: common
     tasks_from: docker
+
+- name: Get secrets for this app
+  ansible.builtin.set_fact:
+    component_secrets: "{{ lookup('community.hashi_vault.hashi_vault', 'roboshop-{{ env }}/data/{{ component_name }} token={{ vault_token }} url=http://vault-internal.saitejasroboshop.store:8200') }}"
+
+- name: Create Container Secrets
+  ansible.builtin.lineinfile:
+    path: /opt/{{ component_name }}.env
+    line: "{{item.key}}={{item.value}}"
+  loop: "{{ component_secrets|dict2items }}"
+
+- name: Create Frontend Container
+  community.docker.docker_container:
+    name: frontend
+    image: public.ecr.aws/w8x4g9h7/roboshop-v3/frontend
+    state: present
+    recreate: true
+    exposed_ports:
+      - "80:80"
+    env_file: /opt/{{ component_name }}.env
