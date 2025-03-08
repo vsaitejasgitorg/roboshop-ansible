@@ -20,4 +20,28 @@
     enabled: yes
 
 
+- name: Get secrets for this app
+  ansible.builtin.set_fact:
+    component_secrets: "{{ lookup('community.hashi_vault.hashi_vault', 'roboshop-{{ env }}/data/{{ component }} token={{ vault_token }} url=http://vault-internal.saitejasroboshop.store:8200') }}"
+  vars:
+    component: "{{ component_name | regex_replace('-docker', '') }}"
+
+- name: Create Container Secrets
+  ansible.builtin.lineinfile:
+    path: /opt/{{ component }}.env
+    line: "{{item.key}}={{item.value}}"
+    create: yes
+  loop: "{{ component_secrets|dict2items }}"
+
+- name: Run Container
+  community.docker.docker_container:
+    name: "{{ component }}"
+    image: public.ecr.aws/w8x4g9h7/roboshop-v3/{{ component }}
+    state: started
+    recreate: true
+    ports:
+      - "80:80"
+    env_file: /opt/{{ component }}.env
+
+
 
