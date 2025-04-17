@@ -15,3 +15,8 @@
 
 - name: Add application user
   ansible.builtin.shell: rabbitmqctl add_user roboshop roboshop123 ; rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+
+- name: Install Prometheus Node exporter
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: prom-node-exporter

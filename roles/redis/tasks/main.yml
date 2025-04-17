@@ -23,3 +23,8 @@
     name: redis
     state: restarted
     enabled: yes
+
+- name: Install Prometheus Node exporter
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: prom-node-exporter
