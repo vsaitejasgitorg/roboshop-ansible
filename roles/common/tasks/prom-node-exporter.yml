@@ -3,3 +3,15 @@
     src: https://github.com/prometheus/node_exporter/releases/download/v1.9.1/node_exporter-1.9.1.linux-amd64.tar.gz
     dest: /opt
     remote_src: true
+
+- name: Copy Prometheus exporter file
+  ansible.builtin.template:
+    src: prom-node-exporter.service
+    dest: node_exporter.service
+
+- name: Start node_exporter
+  ansible.builtin.systemd_service:
+    name: node_exporter
+    state: started
+    enabled: yes
+    daemon_reload: yes
